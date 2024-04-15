@@ -65,12 +65,16 @@ class SnowmanLogic {
 
     this.numWrong += isCorrect ? 0 : 1;
 
-    // TODO: this should update the gameState attr to "WON" or "LOST"
-
-    if (this.maxWrong <= this.numWrong) {
+    if (this.maxWrong < this.numWrong) {
       this.gameState = 'LOST';
-    } else if (!this.getGuessedWord().includes("_")) {
+
+      console.warn("LOST");
+
+    }
+    if (!(this.getGuessedWord().includes("_"))) {
       this.gameState = 'WON';
+
+      console.warn("WON");
     }
 
     return isCorrect;
