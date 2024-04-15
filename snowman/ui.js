@@ -55,9 +55,13 @@ class SnowmanUI {
   guessLetter(letter) {
     console.debug("guessLetter", letter);
 
-    const isCorrect = this.game.guessLetter(letter);
+    const isCorrect = this.game.guessLetter(letter); //TODO: what is this for?
+
     this.updateWord();
     this.updateImage();
+
+    this.checkForOutcomeAndUpdateUI();
+
   }
 
   /** Handle clicking a letter button: disable button & handle guess. */
@@ -67,6 +71,27 @@ class SnowmanUI {
 
     const letter = evt.target.dataset.letter;
     this.guessLetter(letter);
+  }
+
+  /* Check the gameState and update UI to display win or loss */
+  checkForOutcomeAndUpdateUI() {
+    if (this.game.gameState === "PLAYING") return;
+
+    const $main = document.querySelector("#Snowman");
+    const $outcomeArea = document.createElement("div");
+
+    //WON
+    if (this.game.gameState === "WON") {
+
+      $outcomeArea.innerText = "You did it!!! AMAZING!!! CONGRATS!!!";
+    } else {
+      //LOST
+      $outcomeArea.innerText = "You failed.";
+    }
+
+
+
+    $main.append($outcomeArea);
   }
 }
 
