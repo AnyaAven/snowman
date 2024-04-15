@@ -15,7 +15,7 @@ class SnowmanUI {
     this.addKeyboard();
   }
 
-  /** Add keys to keyboard area and register single event listener for area.  */
+  /** Add keys to keyboard area and register single eaent listener for area.  */
 
   addKeyboard() {
     console.debug("addKeyboard");

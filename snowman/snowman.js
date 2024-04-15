@@ -14,7 +14,7 @@ import { ENGLISH_WORDS } from "./words.js";
 
 class SnowmanLogic {
   constructor(maxWrong = 5) {
-    console.debug("SnowmanLogic", {maxWrong});
+    console.debug("SnowmanLogic", { maxWrong });
 
     this.answer = this.getSecret();
     this.guessedLetters = new Set();
@@ -57,7 +57,7 @@ class SnowmanLogic {
   /** Guess letter, update game state, and return t/f if letter correct. */
 
   guessLetter(ltr) {
-    console.debug("guessLetter", {ltr});
+    console.debug("guessLetter", { ltr });
 
     this.guessedLetters.add(ltr);
 
@@ -66,6 +66,12 @@ class SnowmanLogic {
     this.numWrong += isCorrect ? 0 : 1;
 
     // TODO: this should update the gameState attr to "WON" or "LOST"
+
+    if (this.maxWrong <= this.numWrong) {
+      this.gameState = 'LOST';
+    } else if (!this.getGuessedWord().includes("_")) {
+      this.gameState = 'WON';
+    }
 
     return isCorrect;
   }
