@@ -67,14 +67,9 @@ class SnowmanLogic {
 
     if (this.maxWrong < this.numWrong) {
       this.gameState = 'LOST';
-
-      console.warn("LOST");
-
     }
     if (!(this.getGuessedWord().includes("_"))) {
       this.gameState = 'WON';
-
-      console.warn("WON");
     }
 
     return isCorrect;
