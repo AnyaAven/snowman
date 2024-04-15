@@ -4,11 +4,12 @@ import { SnowmanLogic } from "./snowman.js";
  * Model for Snowman game.
  * Inputs are max number of wrong responses that defaults to 5
  *
- * - maxWrong: total number of wrong guessesj allowed
+ * - maxWrong: total number of wrong guesses allowed
  * - game: logic for current  game
  * - $keyboard: DOM keyboard area
  * - $word: current DOM word display
  * - $image: current melting snowman picture
+ *
  * Includes methods addKeyboard, updateWord, updateImage, updateGuess, updateLetter
  * handlesGuess and checkForOutcomeAndUpdateUI
  */
@@ -83,7 +84,7 @@ class SnowmanUI {
   handleGuess(evt) {
     console.debug("handleGuess");
 
-    if (!evt.target.matches('button')) {
+    if (!evt.target.matches('button.letter')) {
       console.log('clicked between buttons oops');
       return;
     }
@@ -106,8 +107,6 @@ class SnowmanUI {
       //LOST
       $outcomeArea.innerText = "You failed.";
     }
-
-
 
     $main.append($outcomeArea);
   }
