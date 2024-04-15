@@ -31,6 +31,8 @@ class SnowmanUI {
     );
 
     this.$keyboard.append(...$letters);
+
+
     this.$keyboard.addEventListener("click", this.handleGuess.bind(this));
   }
 
@@ -69,6 +71,10 @@ class SnowmanUI {
   handleGuess(evt) {
     console.debug("handleGuess");
 
+    if (!evt.target.matches('button')) {
+      console.log('clicked between buttons oops');
+      return;
+    }
     const letter = evt.target.dataset.letter;
     this.guessLetter(letter);
   }
