@@ -1,5 +1,17 @@
 import { SnowmanLogic } from "./snowman.js";
 
+/**
+ * Model for Snowman game.
+ * Inputs are max number of wrong responses that defaults to 5
+ *
+ * - maxWrong: total number of wrong guessesj allowed
+ * - game: logic for current  game
+ * - $keyboard: DOM keyboard area
+ * - $word: current DOM word display
+ * - $image: current melting snowman picture
+ * Includes methods addKeyboard, updateWord, updateImage, updateGuess, updateLetter
+ * handlesGuess and checkForOutcomeAndUpdateUI
+ */
 class SnowmanUI {
   constructor(maxWrong = 5) {
     console.debug("Snowman UI");
