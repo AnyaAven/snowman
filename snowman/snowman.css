@@ -1,3 +1,44 @@
 #Snowman-keyboard .letter {
   margin-right: 1em;
 }
+
+#Snowman-keyboard {
+
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  grid-template-rows: auto;
+  gap: 1rem;
+
+  & button {
+    background-color: #001370;
+    border: none;
+    color: orange;
+    font-size: 2rem;
+
+    padding-block: 15px;
+
+    text-transform: capitalize;
+    text-align: center;
+    text-decoration: none;
+
+    border-radius: 6px;
+  }
+}
+
+#Snowman {
+  background-color: rgb(182, 218, 247);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding-block: 40px;
+}
+
+#Snowman-image {
+  max-width: 40vw;
+  border: 20px, dashed, black;
+
+  border-radius: 6px;
+}
