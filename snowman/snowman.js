@@ -54,7 +54,10 @@ class SnowmanLogic {
       .join("");
   }
 
-  /** Guess letter, update game state, and return t/f if letter correct. */
+  /** Guess letter, update game state, and return t/f if letter correct.
+   *
+   * FIXME: Make underscore  explicit in doc string
+  */
 
   guessLetter(ltr) {
     console.debug("guessLetter", { ltr });
@@ -68,7 +71,7 @@ class SnowmanLogic {
     if (this.maxWrong < this.numWrong) {
       this.gameState = 'LOST';
     }
-    if (!(this.getGuessedWord().includes("_"))) {
+    if (!(this.getGuessedWord().includes("_"))) { //if these are all letters
       this.gameState = 'WON';
     }
 
