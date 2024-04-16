@@ -93,7 +93,7 @@ class SnowmanUI {
     }
     const letter = evt.target.dataset.letter;
 
-    evt.target.disabled = "true";
+    evt.target.disabled = true;
 
     this.guessLetter(letter);
   }
@@ -104,14 +104,16 @@ class SnowmanUI {
 
     const $main = document.querySelector("#Snowman");
     const $outcomeArea = document.createElement("div");
+    $outcomeArea.classList.add("Outcome-area");
 
     //WON
     if (this.game.gameState === "WON") {
 
-      $outcomeArea.innerText = "You did it!!! AMAZING!!! CONGRATS!!!";
+      $outcomeArea.innerText = "CONGRATS!!!";
     } else {
       //LOST
       $outcomeArea.innerText = "You failed.";
+      //this.endGame(); could put endGame here instead
     }
 
     $main.append($outcomeArea);
