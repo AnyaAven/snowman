@@ -19,6 +19,7 @@ class SnowmanUI {
 
     this.maxWrong = maxWrong;
     this.game = new SnowmanLogic(maxWrong);
+    this.handleGuessBound = null;
 
     this.$keyboard = document.querySelector("#Snowman-keyboard");
     this.$word = document.querySelector("#Snowman-word");
@@ -45,8 +46,9 @@ class SnowmanUI {
 
     this.$keyboard.append(...$letters);
 
+    this.handleGuessBound = this.handleGuess.bind(this)
 
-    this.$keyboard.addEventListener("click", this.handleGuess.bind(this));
+    this.$keyboard.addEventListener("click", this.handleGuessBound);
   }
 
   /** Update guessed word on board. */
@@ -77,6 +79,7 @@ class SnowmanUI {
 
     this.checkForOutcomeAndUpdateUI();
 
+    if(this.game.gameState !== "PLAYING") this.endGame();
   }
 
   /** Handle clicking a letter button: disable button & handle guess. */
@@ -89,6 +92,9 @@ class SnowmanUI {
       return;
     }
     const letter = evt.target.dataset.letter;
+
+    evt.target.disabled = "true";
+
     this.guessLetter(letter);
   }
 
@@ -109,6 +115,11 @@ class SnowmanUI {
     }
 
     $main.append($outcomeArea);
+  }
+
+  /* End game and stop button clicks */
+  endGame(){
+    this.$keyboard.removeEventListener("click", this.handleGuessBound);
   }
 }
 
